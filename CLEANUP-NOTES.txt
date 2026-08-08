@@ -1,0 +1,16 @@
+VIZHIPPAAN independence cleanup
+
+- Managed third-party authentication broker removed.
+- Google sign-in now calls the project's Supabase authentication client directly.
+- Vendor-specific Vite wrapper replaced with standard TanStack Start, React, Tailwind and tsconfig-path plugins.
+- Vendor telemetry/error forwarding removed.
+- Hidden project metadata removed.
+- Vendor AI translation gateway script removed.
+- Hosted startup-video asset indirection removed. The app now expects public/vizhippaan-launch.mp4.
+- Vendor-generated dependency lockfiles were removed because they contained private registry/cache references. Run npm install in your normal development environment to generate a fresh package-lock.json.
+
+IMPORTANT EXTERNAL OAUTH SETUP
+Google's consent-screen application name comes from the Google Cloud OAuth client, not from React UI code. Configure your own Google OAuth Client ID/Secret in the Supabase Google provider and set the OAuth consent/branding application name to VIZHIPPAAN. Do not reuse a managed builder OAuth client.
+
+STARTUP VIDEO
+The downloaded source archive did not contain the actual MP4 file; it only contained a hosted asset descriptor. To preserve the launch video exactly, place the original file at public/vizhippaan-launch.mp4.
